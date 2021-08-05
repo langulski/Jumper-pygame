@@ -17,7 +17,7 @@ def obstacle_movement(obstacle_list):
         for obstacle_rect in obstacle_list:
             obstacle_rect.x -=5
 
-            if obstacle_rect.bottom == 500: screen.blit(enemy_surface,obstacle_rect)
+            if obstacle_rect.bottom == 525: screen.blit(enemy_surface,obstacle_rect)
             else:screen.blit(enemy_fly_surface,obstacle_rect)
             
         obstacle_list = [obstacle for obstacle in obstacle_list if obstacle.x >-100]
@@ -29,6 +29,20 @@ def collisions(player,obstacles):
         for obstacle_rect in obstacles:
             if player.colliderect(obstacle_rect): return False
     return True
+
+def player_animation():
+    global player_surf,player_index
+
+    if player_rect.bottom <400:
+        player_surf = player_jump
+    else:
+       player_index +=0.1
+       if player_index >= len(player_walk):player_index = 0
+       player_surf = player_walk[int(player_index)] 
+    
+    #walking if on floor
+    #jump if not on floor
+
 
 
 
@@ -68,10 +82,17 @@ obstacle_rect_list=[]
 
 
 #player stuff
-player_surf = pg.image.load('character/Idle Blinking/0_Reaper_Man_Idle Blinking_000.png').convert_alpha()
-player_surf = pg.transform.scale(player_surf,(128,128))
+player_walk1 = pg.image.load('character/Running/run_01.png').convert_alpha()
+player_walk2 = pg.image.load('character/Running/run_02.png').convert_alpha()
+player_walk = [player_walk1,player_walk2]
+player_index = 0
+player_jump = pg.image.load('character/Jump Start/jump_01.png').convert_alpha()
+
+player_surf = player_walk[player_index]
 player_rect = player_surf.get_rect(midbottom=(40,40))
 player_gravity = 0 
+
+#player in start screen
 player_stand = pg.image.load("character/Idle Blinking/0_Reaper_Man_Idle Blinking_015.png").convert_alpha()
 player_stand = pg.transform.scale(player_stand,(384,384))
 player_stand_rect = player_stand.get_rect(center=(400,300))
@@ -96,11 +117,11 @@ while True:
         if game_active:
             if event.type == pg.MOUSEBUTTONDOWN and player_rect.bottom >= 525:
                 if player_rect.collidepoint(event.pos):
-                    player_gravity =-22
+                    player_gravity =-23
 
             if event.type == pg.KEYDOWN and player_rect.bottom >= 525:
                 if event.key == pg.K_SPACE:
-                    player_gravity =-22
+                    player_gravity =-23
         else:    
             if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
                game_active=True
@@ -110,7 +131,7 @@ while True:
 
         if event.type == obstacle_timer and game_active:
             if randint(0,2):
-                obstacle_rect_list.append(enemy_surface.get_rect(bottomright = (randint(900,1100),500))) 
+                obstacle_rect_list.append(enemy_surface.get_rect(bottomright = (randint(900,1100),525))) 
             else:
                 obstacle_rect_list.append(enemy_fly_surface.get_rect(bottomright = (randint(900,1100),330))) 
    # if event.type == pg.MOUSEMOTION:
@@ -134,6 +155,7 @@ while True:
         player_gravity+=1
         player_rect.y += player_gravity
         if player_rect.bottom >=525: player_rect.bottom = 525
+        player_animation()
         screen.blit(player_surf,player_rect)
 
     
