@@ -8,13 +8,15 @@
       Although not perfect, developing this game is a good way to learn Python with the best method that exists:
       CODING IT!!! 
    
-    
-
-                                  https://user-images.githubusercontent.com/85833899/128551697-f8a5c96e-b134-485d-b9aa-76fd7ea60317.mp4
 
 
 
   </body>
   
  </main>
+
+
+
+https://user-images.githubusercontent.com/85833899/128551802-611d6e4e-b096-4655-acce-d2cc5a6efa83.mp4
+
 
