@@ -60,7 +60,7 @@ class Obstacle(pg.sprite.Sprite):
 
         self.animation_index = 0
         self.image = self.frames[self.animation_index]
-        self.rect = self.image.get_rect(midbottom=(random.randint(900,1100),y_pos))
+        self.rect = self.image.get_rect(midbottom=(random.randint(950,1200),y_pos))
         
     def animation_state(self):
         self.animation_index +=0.1
