@@ -3,13 +3,15 @@
 
 <main>
   <body>
-   <p> This game is very similiar to the famous "fapply Bird", with some small changes of the game mechanics.</p>
+   <p> This game is very similiar to the famous "fapply Bird", with some small changes from the game mechanics.</p>
   
   <p>Although not perfect, developing this game is a good way to learn Python with the best method that exists:
     CODING IT!!! </p>
    
 <p> Quick note: there is a bug related to the total player Score, probably it is the font the I am using, will check later on. </p>
 
+    
+<p> PS. need to add sound FX for the game.. since I created for educational purpose, i just might not add. </p>
 
   </body>
   
