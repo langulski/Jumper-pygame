@@ -88,7 +88,7 @@ def display_score():
 def obstacle_movement(obstacle_list):
     if obstacle_list:
         for obstacle_rect in obstacle_list:
-            obstacle_rect.x -=5
+            obstacle_rect.x -=6
 
             if obstacle_rect.bottom == 525: screen.blit(enemy_surf,obstacle_rect)
             else:screen.blit.flip(enemy_fly_surf,obstacle_rect)
@@ -186,7 +186,7 @@ game_message_rect = game_message.get_rect(center=(400,500))
 
 #timer
 obstacle_timer = pg.USEREVENT +1
-pg.time.set_timer(obstacle_timer,1500)
+pg.time.set_timer(obstacle_timer,1300)
 
 #ground enemy timer
 enemy_animation_timer = pg.USEREVENT +2
@@ -194,7 +194,7 @@ pg.time.set_timer(enemy_animation_timer,500)
 
 #fly enemy timer
 enemy_animation_fly_timer = pg.USEREVENT +3
-pg.time.set_timer(enemy_animation_fly_timer,150)
+pg.time.set_timer(enemy_animation_fly_timer,250)
 
 
 while True:
